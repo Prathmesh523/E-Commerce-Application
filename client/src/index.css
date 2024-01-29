@@ -1,0 +1,93 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: inherit;
+}
+.bottom-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #515151;
+  height: 650px;
+  padding: 30px;
+}
+.form-container{
+  max-width: 600px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+}
+.form-container-details{
+  margin-bottom: 40px;
+  text-align: center;
+}
+.form-container-title{
+  color:#555;
+  font-size: 40px;
+  margin-bottom: 10px;
+}
+.form-container-subtitle{
+  font-size: 30px;
+  color: #999;
+}
+
+.form-field{
+  margin:0px 10px 30px 10px
+}
+.form-input{
+  width:100%;
+  padding: 20px 15px;
+  border: 0;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  font-size: 18px;
+  color: #555;
+  font-weight: 600;
+}
+.form-submit{
+  background-color: #037ef3;
+  color: #fff;
+  font-weight: 600;
+  font-size: 18px;
+  width: 100%;
+  padding: 20px 15px;
+  border-radius: 5px;
+  border: 0;
+  transition: all 0.8s;
+  cursor: pointer;
+}
+.from-submit:active{
+  background-color: wheat;   
+}
+.form-container-links{
+  margin-top: 20px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.form-container-link{
+  font-size: 18px;
+  font-weight: 400;
+}
+@media (max-width:600px)
+{
+  .form-container{
+      padding: 30px 25px;
+  }
+  .form-input, .form-submit{
+      padding: 18px 15px;
+  }
+}
+.middle-content{
+  display: flex;
+  flex-direction: row;
+}
+/* home page */
+.add-product{
+  padding-top: 30px;
+  padding-left: 660px;
+}
+.category-row{
+  margin: 20px 20px 60px 30px;
+}
