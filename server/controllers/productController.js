@@ -67,8 +67,8 @@ export const updateProduct = async (req, res) => {
 
 export const deleteProduct = async (req, res) => {
     try {
-        const [title] = req.body   
-
+        const [itemTitle] = req.body   
+        const title=itemTitle
         const product = await Product.deleteOne({
             title
         })

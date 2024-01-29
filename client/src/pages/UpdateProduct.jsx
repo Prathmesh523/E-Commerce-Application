@@ -1,20 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Navbar from '../components/Navbar'
 import '../index.css'
 
-export default function AddProduct() {
+export default function UpdateProduct({title, price, description, category, image, rate, count, setTitle, setPrice, setDescription, setCategory, setImage, setRate, setCount}) {
     const [role, setRole] = useState(null)
     const navigate = useNavigate()
-
-    const [title, setTitle] = useState(null)
-    const [price, setPrice] = useState(null)
-    const [description, setDescription] = useState(null)
-    const [category, setCategory] = useState(null)
-    const [image, setImage] = useState(null)
-    const [rate, setRate] = useState(null)
-    const [count, setCount] = useState(null)
 
     const submit = async (e) => {
         e.preventDefault()
@@ -28,6 +20,13 @@ export default function AddProduct() {
             const data = await axios.post('http://localhost:5000/products/create', [title,price,description,category,image,rating])
 
             if (data.data.status) {
+                setTitle(null)
+                setPrice(null)
+                setDescription(null)
+                setCategory(null)
+                setImage(null)
+                setRate(null)
+                setCount(null)
                 navigate("/editproducts")
             }
         }

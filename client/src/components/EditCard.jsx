@@ -7,14 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import axios from 'axios'
 
-export default function EditCard({title, price, description, image, rating}) {
-    const deleteItem=()=>{
-      console.log()
-      // const confirm=await axios.post('http://localhost:5000/products/delete',[title])
-    }
-    const editItem=()=>{
-
-    }
+export default function EditCard({index, setDeleteItem, setEditItem, title, price, description, image, rating}) {
 
   return (
     <Card sx={{ width: 320, padding:"10px" }}>
@@ -34,8 +27,8 @@ export default function EditCard({title, price, description, image, rating}) {
         <Typography>{ `Rating: ${rating}/5`}</Typography>
       </CardContent>
       <CardActions>
-        <Button size="small" variant='contained' onClick={deleteItem}>Edit</Button>
-        <Button size="small"variant='outlined' onClick={editItem}>Delete</Button>
+        <Button size="small" variant='contained' onClick={()=>{setEditItem(index)}}>Edit</Button>
+        <Button size="small"variant='outlined' onClick={()=>{setDeleteItem(index)}}>Delete</Button>
       </CardActions>
     </Card>
   );
