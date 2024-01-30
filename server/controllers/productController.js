@@ -50,7 +50,7 @@ export const updateProduct = async (req, res) => {
     try {
         const [title, price, description, category, image, rating] = req.body   
 
-        const product = await Product.updateOne(title, {
+        const product = await Product.updateOne({title}, {
             title, price, description, category, image, rating
         })
         if (product) {

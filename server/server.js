@@ -4,6 +4,7 @@ import cors from 'cors'
 import {dbConnect} from './config/dbConnect.js'
 import userRoutes from './routes/userRoutes.js'
 import productRoutes from './routes/productRoutes.js'
+import cartRoutes from './routes/cartRoutes.js'
 
 dotenv.config()
 dbConnect()
@@ -15,6 +16,7 @@ app.use(express.json())
 
 app.use('/users',userRoutes)
 app.use('/products',productRoutes)
+app.use('/cart',cartRoutes)
 
 app.listen(PORT, ()=>{
     console.log(`Server is running on Port ${PORT}`)

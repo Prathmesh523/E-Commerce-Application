@@ -46,6 +46,12 @@ export default function Navbar({ role }) {
         setAnchorElUser(null);
     };
 
+    const logoutfunc = () => {
+        setAnchorElUser(null);
+        localStorage.clear();
+        navigate('/login')
+    }
+
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
@@ -160,7 +166,7 @@ export default function Navbar({ role }) {
                                 <MenuItem onClick={() => { setAnchorEl(null); navigate('/products/jewelery') }}>Jewelery</MenuItem>
                             </Menu>
                             <Button
-                                onClick={() => { setAnchorElNav(null); navigate('cart') }}
+                                onClick={() => { setAnchorElNav(null); navigate('/cart') }}
                                 sx={{ my: 2, color: 'white', display: 'block' }}
                             >
                                 Cart
@@ -173,7 +179,7 @@ export default function Navbar({ role }) {
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: '10px', display: 'flex', flexDirection: 'column' }}>
                                 <Avatar />
-                                <Typography variant='button' sx={{color:"white"}}>{role === 0 ? ("User") : (role === 1 ? ("Admin") : (null))}</Typography>
+                                <Typography variant='button' sx={{ color: "white" }}>{role === 0 ? ("User") : (role === 1 ? ("Admin") : (null))}</Typography>
                             </IconButton>
 
                         </Tooltip>
@@ -194,28 +200,29 @@ export default function Navbar({ role }) {
                             onClose={handleCloseUserMenu}
                         >
                             {
-                                role === null ? (
+                                role === 1 ? (
                                     <div>
-                                        <MenuItem onClick={() => { setAnchorElUser(null); navigate('/login') }}>
-                                            <Typography textAlign="center">Login</Typography>
+                                        <MenuItem onClick={() => { setAnchorElUser(null); navigate('/editproducts') }}>
+                                            <Typography textAlign="center">Edit Products</Typography>
                                         </MenuItem>
-                                        <MenuItem onClick={() => { setAnchorElUser(null); navigate('/register') }}>
-                                            <Typography textAlign="center">Register</Typography>
+                                        <MenuItem onClick={() => { logoutfunc() }}>
+                                            <Typography textAlign="center">Logout</Typography>
                                         </MenuItem>
                                     </div>
+
                                 ) : (
                                     role === 0 ? (
-                                        <MenuItem onClick={() => { setAnchorElUser(null); navigate('/') }}>
+                                        <MenuItem onClick={() => { logoutfunc() }}>
                                             <Typography textAlign="center">Logout</Typography>
                                         </MenuItem>
                                     ) : (
 
                                         <div>
-                                            <MenuItem onClick={() => { setAnchorElUser(null); navigate('/editproducts') }}>
-                                                <Typography textAlign="center">Edit Products</Typography>
+                                            <MenuItem onClick={() => { setAnchorElUser(null); navigate('/login') }}>
+                                                <Typography textAlign="center">Login</Typography>
                                             </MenuItem>
-                                            <MenuItem onClick={() => { setAnchorElUser(null); navigate('/') }}>
-                                                <Typography textAlign="center">Logout</Typography>
+                                            <MenuItem onClick={() => { setAnchorElUser(null); navigate('/register') }}>
+                                                <Typography textAlign="center">Register</Typography>
                                             </MenuItem>
                                         </div>
                                     )

@@ -38,10 +38,18 @@ export default function AddProduct() {
             const token = localStorage.getItem("token")
             if (token != null) {
                 const role = await axios.post("http://localhost:5000/users/getrole", [token])
-                setRole(role.data.data)
+                if(role.data.data===1)
+                {
+                    setRole(role.data.data)
+                }
+                else
+                {
+                    navigate("/")
+                }
             }
             else {
                 setRole(null)
+                navigate("/")
             }
         }
         display()

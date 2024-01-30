@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import Navbar from '../components/Navbar'
 import '../index.css'
@@ -17,7 +17,7 @@ export default function UpdateProduct({title, price, description, category, imag
         else
         {
             const rating={rate,count}
-            const data = await axios.post('http://localhost:5000/products/create', [title,price,description,category,image,rating])
+            const data = await axios.post('http://localhost:5000/products/update', [title,price,description,category,image,rating])
 
             if (data.data.status) {
                 setTitle(null)
@@ -37,10 +37,18 @@ export default function UpdateProduct({title, price, description, category, imag
             const token = localStorage.getItem("token")
             if (token != null) {
                 const role = await axios.post("http://localhost:5000/users/getrole", [token])
-                setRole(role.data.data)
+                if(role.data.data===1)
+                {
+                    setRole(role.data.data)
+                }
+                else
+                {
+                    navigate("/")
+                }
             }
             else {
                 setRole(null)
+                navigate("/")
             }
         }
         display()
@@ -57,7 +65,7 @@ export default function UpdateProduct({title, price, description, category, imag
                             Shopify
                         </div>
                         <div className="form-container-subtitle">
-                            Fill Product Details
+                            Update Product Details
                         </div>
                     </div>
                     <form className='form' onSubmit={submit}>

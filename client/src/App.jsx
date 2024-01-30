@@ -34,7 +34,7 @@ function App() {
         <Route path='/products/jewelery' element={<Jewelery />} />
         <Route path='/editproducts' element={<EditProducts setTitle={setTitle} setPrice={setPrice} setDescription={setDescription} setCategory={setCategory} setImage={setImage} setRate={setRate} setCount={setCount} />} />
         <Route path='/addproduct' element={<AddProduct />} />
-        <Route path='updateproduct' element={<UpdateProduct title={title} price={price} description={description} category={category} image={image} rate={rate} count={count}
+        <Route path='/updateproduct' element={<UpdateProduct title={title} price={price} description={description} category={category} image={image} rate={rate} count={count}
                                                         setTitle={setTitle} setPrice={setPrice} setDescription={setDescription} setCategory={setCategory} setImage={setImage} setRate={setRate} setCount={setCount} />}></Route>
       </Routes>
     </>
